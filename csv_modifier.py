@@ -53,17 +53,17 @@ for row in kango_list:
     if not row["reading"]:
         row["reading"] = converter.do(row["kango"])
 
-    if not row["trans"]:
+    if not row["translation"]:
         trans = find_translations(
             args.file, row["kango"], pattern, args.opening_tag, args.closing_tag)
         if not trans:
-            row["trans"] = None
+            row["translation"] = None
         elif len(trans) > 1:
-            row["trans"] = ", ".join(trans)
+            row["translation"] = ", ".join(trans)
         elif len(trans) == 1:
-            row["trans"] = trans[0]
+            row["translation"] = trans[0]
         else:
-            row["trans"] = None
+            row["translation"] = None
 try:
     write_a_file()
 except FileExistsError as e:
