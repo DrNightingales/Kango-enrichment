@@ -11,7 +11,7 @@ Simple script to create readings and translations for a list of japanese kango
 | ----- | -------- | ----------------------- |
 | 先生  | せんせい | Teacher, doctor, master |
 
-By default CSV file must contain fields **kango, reading  and translation** in the first row, which are used as a header (but the output file won't have the heading), separated by | .
+By default CSV file must contain fields **kango, reading  and translation** in the first row. By default, output file will be in the json format. If you use -T option, you will get a CSV file, without examples from tatoeba db
 
 Default usage would be:
 
@@ -27,5 +27,6 @@ dsl_search.py can be used to find separate values in the dsl file, however it is
 
 ##### Dependencies
 
-- [pykakasi]: https://github.com/miurahr/pykakasi	"Github repo"
+- [pykakasi]: https://github.com/miurahr/pykakasi   "Github repo"
+- [tatoeba project]: https://tatoeba.org/   "Tatoeba project"
 
