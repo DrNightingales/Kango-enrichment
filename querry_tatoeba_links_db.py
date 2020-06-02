@@ -7,9 +7,9 @@ import sqlite3
 
 def querry(kanji):
     """
-    This funtion will return a list of {"jap":"eng"} dictionaries, containing requested kanji/kango
+    This funtion will return a dictionary, containing requested kanji/kango examples with translations
     """
-    with sqlite3.connect("links.db") as con:
+    with sqlite3.connect("tatoeba_links.db") as con:
         cur = con.cursor()
         cur.execute(
             'SELECT meaning_id, sentence FROM jpn_indices WHERE sentence LIKE "%' + kanji + '%";')
@@ -24,12 +24,15 @@ def querry(kanji):
             eng_indices + ');'
         cur.execute(q)
         eng = cur.fetchall()
+        jpn_eng_dict = dict()
         for sent in eng:
-            res_dict[sent[0]] = {res_dict[sent[0]]: sent[1]}
+            jpn_eng_dict[res_dict[sent[0]]] = sent[1]
+            #res_dict[sent[0]] = {res_dict[sent[0]]: sent[1]}
 
-        return list(res_dict.values())
+        return jpn_eng_dict
+        # return list(res_dict.values())
 
 
 if __name__ == "__main__":
     # Test call
-    print(querry("漢字"))
+    print(querry("すばらしい"))

@@ -3,9 +3,6 @@ A module, which parses DSL files based on user's regexes
 """
 import argparse
 import re
-from contextlib import closing
-
-from parted import Partition
 
 
 def process_answer(ans, ot, ct):
@@ -71,9 +68,9 @@ if __name__ == "__main__":
     parser.add_argument(
         "-f", "--file", help="DSL dictionary file (new regex will be required)")
     parser.add_argument("word", help="The word to search")
-    parser.add_argument("-o", "--opening-tag",
+    parser.add_argument("-O", "--opening-tag",
                         help="An opening tag/set of tags for a custom dsl dictianry")
-    parser.add_argument("-c", "--closing-tag",
+    parser.add_argument("-C", "--closing-tag",
                         help="A closing tag/set of tags for a custom dsl dictianry")
     parser.set_defaults(file="japan2.dsl",
                         opening_tag="[m1]", closing_tag="[/m]")
